@@ -40,6 +40,15 @@ namespace DAL.Persistence
 			{
 				AbrirConexao();
 
+				Cmd = new SqlCommand("update Pessoa set Nome=@v1, Endereco=@v2, Email=@v3 where Codigo=@v4", Con);
+
+				Cmd.Parameters.AddWithValue("@v1", pessoa.Nome);
+				Cmd.Parameters.AddWithValue("@v2", pessoa.Endereco);
+				Cmd.Parameters.AddWithValue("@v3", pessoa.Email);
+				Cmd.Parameters.AddWithValue("@v4", pessoa.Codigo);
+
+				Cmd.ExecuteNonQuery();
+
 			}
 			catch (Exception ex)
 			{
@@ -52,5 +61,48 @@ namespace DAL.Persistence
 			}
 		}
 
+		public void Excluir(int Codigo)
+		{
+			try
+			{
+				AbrirConexao();
+
+				Cmd = new SqlCommand("delete from Pessoa where Codigo=@v1", Con);
+
+				Cmd.Parameters.AddWithValue("@v1", Codigo);
+
+				Cmd.ExecuteNonQuery();
+			}
+			catch (Exception ex)
+			{
+
+				throw new Exception("Erro ao excluir a pessoa." + ex.Message);
+			}
+			finally
+			{
+				FecharConexao();
+			}
+		}
+		/*
+		public Pessoa PesquisarPorCodigo(int Codigo)
+		{
+			try
+			{
+				AbrirConexao();
+
+				Cmd = new SqlCommand("select * from Pessoa where Codigo=@v1",Con);
+
+
+			}
+			catch (Exception ex)
+			{
+
+				throw new Exception("Erro ao buscar a pessoa: "+ex.Message);
+			}
+			finally
+			{
+				FecharConexao();
+			}
+		}*/
     }
 }
