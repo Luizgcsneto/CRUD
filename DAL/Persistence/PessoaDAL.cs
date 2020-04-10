@@ -83,7 +83,7 @@ namespace DAL.Persistence
 				FecharConexao();
 			}
 		}
-		/*
+		
 		public Pessoa PesquisarPorCodigo(int Codigo)
 		{
 			try
@@ -91,6 +91,21 @@ namespace DAL.Persistence
 				AbrirConexao();
 
 				Cmd = new SqlCommand("select * from Pessoa where Codigo=@v1",Con);
+
+				Cmd.Parameters.AddWithValue("@v1", Codigo);
+
+				Pessoa pessoa = null;
+
+				if (Dr.Read())
+				{
+					pessoa = new Pessoa();
+
+					pessoa.Codigo = Convert.ToInt32(Dr["Codigo"]);
+					pessoa.Nome = Convert.ToString(Dr["Nome"]);
+					pessoa.Endereco = Convert.ToString(Dr["Endereco"]);
+					pessoa.Email = Convert.ToString(Dr["Email"]);
+				}
+				return pessoa;
 
 
 			}
@@ -103,6 +118,6 @@ namespace DAL.Persistence
 			{
 				FecharConexao();
 			}
-		}*/
+		}
     }
 }
