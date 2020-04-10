@@ -100,10 +100,10 @@ namespace DAL.Persistence
 				{
 					pessoa = new Pessoa();
 
-					pessoa.Codigo = Convert.ToInt32(Dr["Codigo"]);
-					pessoa.Nome = Convert.ToString(Dr["Nome"]);
-					pessoa.Endereco = Convert.ToString(Dr["Endereco"]);
-					pessoa.Email = Convert.ToString(Dr["Email"]);
+					pessoa.Codigo    = Convert.ToInt32(Dr["Codigo"]);
+					pessoa.Nome      = Convert.ToString(Dr["Nome"]);
+					pessoa.Endereco  = Convert.ToString(Dr["Endereco"]);
+					pessoa.Email     = Convert.ToString(Dr["Email"]);
 				}
 				return pessoa;
 
@@ -113,6 +113,43 @@ namespace DAL.Persistence
 			{
 
 				throw new Exception("Erro ao buscar a pessoa: "+ex.Message);
+			}
+			finally
+			{
+				FecharConexao();
+			}
+		}
+
+		public List<Pessoa> Listar()
+		{
+			try
+			{
+				AbrirConexao();
+
+				Cmd = new SqlCommand("select * from Pessoa", Con);
+				Dr  = Cmd.ExecuteReader();
+
+				List<Pessoa> Lista = new List<Pessoa>();
+
+				while (Dr.Read())
+				{
+					Pessoa pessoa = new Pessoa();
+
+					pessoa.Codigo   = Convert.ToInt32(Dr["Codigo"]);
+					pessoa.Nome     = Convert.ToString(Dr["Nome"]);
+					pessoa.Endereco = Convert.ToString(Dr["Endereco"]);
+					pessoa.Email = Convert.ToString(Dr["Email"]);
+
+					Lista.Add(pessoa);
+				}
+
+				return Lista;
+
+			}
+			catch (Exception ex)
+			{
+
+				throw new Exception("Erro ao listar as pessoas: "+ex.Message);
 			}
 			finally
 			{
