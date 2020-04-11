@@ -57,7 +57,7 @@
                         <asp:Label ID="lblMensagem" runat="server" />
                     </p>
 
-                    <asp:Button ID="btnCadastro" runat="server" Text="Cadastrar" CssClass="btn btn-success" />
+                    <asp:Button ID="btnCadastro" runat="server" Text="Cadastrar" CssClass="btn btn-success"  OnClick="btnCadastrarClientes"/>
                     <a href="/Default.aspx" class="btn btn-default">Voltar</a>
 
                 </div>
