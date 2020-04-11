@@ -32,6 +32,10 @@ namespace Site.Pages
 
                 lblMensagem.Text = "Cliente " + pessoa.Nome + " cadastrado com Sucesso.";
 
+                txtNome.Text = string.Empty;
+                txtEndereco.Text = string.Empty;
+                txtEmail.Text = string.Empty;
+
             }
             catch (Exception ex)
             {
