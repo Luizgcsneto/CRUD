@@ -15,25 +15,39 @@
             <div class="span10 offset1">
                 <div class="row">
                     <h3 class="well">Detalhes do cliente</h3>
-                    <br />
-                    <br />
+                    Informe o código.<br />
                     <asp:TextBox ID="txtCodigo" runat="server" placeholder="" Width="5%" CssClass="form-control" />
                     <br />
-                    <asp:Button ID="btnPesquisar" runat="server" CssClass="btn btn-info" Text="Pesquisar" />
-                    <br />
-                    <br />
-                    <asp:TextBox ID="TextNome" runat="server" placeholder="Nome do cliente" Width="45%" CssClass="form-control" />
-                    <br />
-                    <br />
-                    <asp:TextBox ID="TextEndereco" runat="server" placeholder="Endereco do cliente" Width="50%" CssClass="form-control" />
-                    <br />
-                    <br />
-                    <asp:TextBox ID="TextEmail" runat="server" placeholder="Email do cliente" Width="25%" CssClass="form-control" />
-                    <br />
-                    <br />
-                    <asp:Button ID="btnExclui" runat="server" CssClass="btn btn-danger" Text="Excluir" />
-                    <asp:Button ID="btnAtualiza" runat="server" CssClass="btn btn-warning" Text="Atualizar" />
+                    <asp:Button ID="btnPesquisar" runat="server" CssClass="btn btn-info" Text="Pesquisar" OnClick="btnPesquisarCliente" />
+
                     <a href="/Default.aspx" class="btn btn-default">Voltar</a>
+                    <br />
+                    <br />
+                    <br />
+                    <asp:Panel ID="pnlDados" runat="server">
+                        Nome do cliente:
+                        <br />
+                        <asp:TextBox ID="txtNome" runat="server" placeholder="" Width="45%" CssClass="form-control" />
+                        <br />
+                        <br />
+                        Endereço do cliente:
+                        <br />
+                        <asp:TextBox ID="txtEndereco" runat="server" placeholder="" Width="50%" CssClass="form-control" />
+                        <br />
+                        <br />
+                        E-mail do cliente:
+                        <br />
+                        <asp:TextBox ID="txtEmail" runat="server" placeholder="" Width="25%" CssClass="form-control" />
+                        <br />
+                        <br />
+                        <asp:Label ID="lblMensagem" runat="server" />
+
+                        <asp:Button ID="btnExclui" runat="server" CssClass="btn btn-danger" Text="Excluir" OnClick="btnExcluirCliente" />
+
+                        <asp:Button ID="btnAtualiza" runat="server" CssClass="btn btn-primary" Text="Atualizar" OnClick="btnAtualizarCliente" />
+
+
+                    </asp:Panel>
                 </div>
             </div>
         </div>

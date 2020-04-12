@@ -15,6 +15,7 @@ namespace DAL.Persistence
 			try
 			{
 				AbrirConexao();
+
 				Cmd = new SqlCommand("insert into Pessoa(Nome, Endereco, Email) values (@v1, @v2, @v3)", Con);
 
 				Cmd.Parameters.AddWithValue("@v1", pessoa.Nome);
@@ -94,6 +95,8 @@ namespace DAL.Persistence
 
 				Cmd.Parameters.AddWithValue("@v1", Codigo);
 
+				Dr = Cmd.ExecuteReader();
+
 				Pessoa pessoa = null;
 
 				if (Dr.Read())
@@ -127,6 +130,7 @@ namespace DAL.Persistence
 				AbrirConexao();
 
 				Cmd = new SqlCommand("select * from Pessoa", Con);
+
 				Dr  = Cmd.ExecuteReader();
 
 				List<Pessoa> Lista = new List<Pessoa>();
